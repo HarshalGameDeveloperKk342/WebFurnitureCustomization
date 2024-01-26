@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open HTML2 and WebGL</title>
+</head>
+<body>
+
+    <h1>Open HTML2 and WebGL</h1>
+    
+    <!-- Input field to enter a name -->
+    <label for="name">Enter Name:</label>
+    <input type="text" id="name" placeholder="Type your name">
+
+    <!-- Button to open HTML2 with the entered name -->
+    <button onclick="openHTML2()">Open HTML2</button>
+
+    <!-- Button to open WebGL page with a static name parameter -->
+    <button onclick="openWebGL()">Open WebGL</button>
+
+    <!-- Button to open WebGL page with a predefined static name parameter -->
+    <button onclick="openWebGL2()">Open WebGL 2</button>
+
+    <!-- JavaScript to open HTML2 with the entered name -->
+    <script>
+        function openHTML2() {
+            var name = document.getElementById('name').value;
+            window.open('html2.html?name=' + encodeURIComponent(name), '_blank');
+        }
+
+        function openWebGL() {
+            var name = document.getElementById('name').value;
+            // Use a relative path to open the WebGL page
+            window.open('./index.html?name=' + encodeURIComponent(name), '_blank');
+        }
+
+        function openWebGL2() {
+            // Use a static name parameter for WebGL 2
+            var staticName = "harsh";
+            window.open('./index.html?name=' + encodeURIComponent(staticName), '_blank');
+        }
+    </script>
+
+</body>
+</html>

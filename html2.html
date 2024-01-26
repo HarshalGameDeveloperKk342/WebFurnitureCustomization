@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML2</title>
+</head>
+<body>
+
+    <h1>HTML2</h1>
+
+    <!-- JavaScript to retrieve the name from the query parameter -->
+    <script>
+        // Function to get the value of a query parameter from the URL
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Get the name from the query parameter
+        var name = getQueryParam('name');
+
+        // Display the name on HTML2
+        document.write('<p>Hello, ' + name + '!</p>');
+    </script>
+
+</body>
+</html>
