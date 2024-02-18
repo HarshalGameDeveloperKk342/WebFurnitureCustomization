@@ -4,41 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Open HTML2 and WebGL</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 20;
+        }
+        h1 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            margin: 20px;
+        }
+        h1 img {
+            width: 25%;
+            height: auto;
+            padding-left: 30px;
+
+        }
+        h2 {
+            padding-left: 10px;
+        }
+        img {
+            width: 500px;
+            height: auto;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .images {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1000px;
+        }
+        .title {
+            margin-top: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 
-    <h1>Open HTML2 and WebGL</h1>
+    <h1> <img src="Wriver logo.jpeg" > </h1>
     
-    <!-- Input field to enter a name -->
-    <label for="name">Enter Name:</label>
-    <input type="text" id="name" placeholder="Type your name">
 
-    <!-- Button to open HTML2 with the entered name -->
-    <button onclick="openHTML2()">Open HTML2</button>
-
-    <!-- Button to open WebGL page with a static name parameter -->
-    <button onclick="openWebGL()">Open WebGL</button>
-
-    <!-- Button to open WebGL page with a predefined static name parameter -->
-    <button onclick="openWebGL2()">Open WebGL 2</button>
+    <!-- Images to open HTML2 with the entered name -->
+    <div class="images">
+        <div>
+            <img src="Arcus Sofa 01840x560.jpeg" alt="Sofa" onclick="openHTML2('1')" style="margin-right: 30px;">
+            <div class="title">Arcus Sofa<br>FIUM COLLECTION</div>
+        </div>
+        <div>
+            <img src="Cleave-300-Side-Table-03.jpg" alt="Table" onclick="openHTML2('0')">
+            <div class="title">Cleave 300 Side Table<br>FLEXUS COLLECTION</div>
+        </div>
+    </div>
 
     <!-- JavaScript to open HTML2 with the entered name -->
     <script>
-        function openHTML2() {
-            var name = document.getElementById('name').value;
-            window.open('html2.html?name=' + encodeURIComponent(name), '_blank');
-        }
-
-        function openWebGL() {
-            var name = document.getElementById('name').value;
-            // Use a relative path to open the WebGL page
-            window.open('./UnityBuildFile.html?name=' + encodeURIComponent(name), '_blank');
-        }
-
-        function openWebGL2() {
-            // Use a static name parameter for WebGL 2
-            var staticName = "harsh";
-            window.open('./UnityBuildFile.html?name=' + encodeURIComponent(staticName), '_blank');
+        function openHTML2(name) {
+            window.open('UnityBuildFile.html?name=' + name);
         }
     </script>
 

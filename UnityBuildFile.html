@@ -32,6 +32,24 @@
       var fullscreenButton = document.querySelector("#unity-fullscreen-button");
       var warningBanner = document.querySelector("#unity-warning");
 
+        // Function to get the value of a query parameter from the URL
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Get the name from the query parameter
+        var name = getQueryParam('name');
+// Check if the name can be parsed into an integer
+
+var parsedName;
+if (/^\d+$/.test(name)) {
+    parsedName = parseInt(name);
+} else {
+    console.error('Name is not a valid integer');
+    // Handle the error appropriately, e.g., set a default value
+    parsedName = 0;
+}
       // Shows a temporary message banner/ribbon for a few seconds, or
       // a permanent error message on top of the canvas if type=='error'.
       // If type=='warning', a yellow highlight color is used.
@@ -99,17 +117,20 @@
       }
 
       loadingBar.style.display = "block";
-
+      var unityInstanceref = null;
       var script = document.createElement("script");
       script.src = loaderUrl;
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
               }).then((unityInstance) => {
+                unityInstanceref = unityInstance;
                 loadingBar.style.display = "none";
                 fullscreenButton.onclick = () => {
                   unityInstance.SetFullscreen(1);
                 };
+                unityInstanceref.SendMessage('Testing', 'OnObj',parsedName);
+
               }).catch((message) => {
                 alert(message);
               });
